@@ -1,1 +1,127 @@
+https://freecodecam-learncelest-owwjtmigjkh.ws-us108.gitpod.io/  
+
+psql --username=freecodecamp --dbname=postgres < universe.sql
+
+
+universe=> 
+universe=> 
+universe=> ALTER TABLE exoplanet
+universe->     ADD COLUMN star_id INT;
+ALTER TABLE
+universe=>     
+universe=> ALTER TABLE exoplanet
+universe->     ADD CONSTRAINT exoplanet_star_id FOREIGN KEY (star_id) REFERENCES star(id);
+ERROR:  column "id" referenced in foreign key constraint does not exist
+universe=> ALTER TABLE exoplanet
+universe->     ADD CONSTRAINT exoplanet_star_id FOREIGN KEY (star_id) REFERENCES star(id);
+ERROR:  column "id" referenced in foreign key constraint does not exist
+universe=> 
+universe=> 
+universe=> ALTER TABLE exoplanet
+    ADD CONSTRAINT exoplanet_star_id FOREIGN KEY (star_id) REFERENCES star(id);
+universe-> ALTER TABLE exoplanet
+    ADD CONSTRAINT exoplanet_star_id FOREIGN KEY (star_id) REFERENCES star(id);
+universe-> 
+universe-> 
+universe-> ALTER TABLE exoplanet
+universe->     ADD CONSTRAINT exoplanet_star_id FOREIGN KEY (star_id) REFERENCES star(id);
+ERROR:  syntax error at or near "TABLE"
+LINE 2: ALTER TABLE exoplanet
+              ^
+universe=> ALTER TABLE exoplanet
+universe->     ADD CONSTRAINT exoplanet_star_id FOREIGN KEY (star_id) REFERENCES star(id);
+ERROR:  column "id" referenced in foreign key constraint does not exist
+universe=> 
+universe=> 
+universe=> 
+universe=> 
+universe=> ALTER TABLE exoplanet
+universe->     ADD CONSTRAINT exoplanet_star_id FOREIGN KEY (star_id) REFERENCES star(id);
+ERROR:  column "id" referenced in foreign key constraint does not exist
+universe=> 
+universe=> 
+universe=> 
+universe=> ALTER TABLE exoplanet ADD CONSTRAINT exoplanet_star_id FOREIGN KEY (star_id) REFERENCES star(id);
+ERROR:  column "id" referenced in foreign key constraint does not exist
+universe=> 
+universe=> 
+universe=> SELECT table_name, column_name, constraint_name, referenced_table_name, referenced_column_name
+universe-> FROM information_schema.constraint_column_usage
+universe-> WHERE table_name IN ('galaxy', 'star', 'planet', 'moon', 'exoplanet') 
+universe-> AND constraint_name LIKE '%_fkey';
+ERROR:  column "referenced_table_name" does not exist
+LINE 1: SELECT table_name, column_name, constraint_name, referenced_...
+                                                         ^
+universe=> SELECT table_name, column_name, constraint_name, referenced_table_name, referenced_column_name
+FROM information_schema.constraint_column_usage
+WHERE table_name IN ('galaxy', 'star', 'planet', 'moon', 'exoplanet')
+AND constraint_name LIKE '%_fkey';
+universe-> 
+universe-> 
+universe-> 
+universe-> 
+universe-> 
+universe-> 
+universe-> SELECT table_name, column_name, constraint_name, referenced_table_name, referenced_column_name
+FROM information_schema.constraint_column_usage
+WHERE table_name IN ('galaxy', 'star', 'planet', 'moon', 'exoplanet')
+AND constraint_name LIKE '%_fkey';
+universe-> 
+universe-> 
+universe-> 
+universe-> SELECT table_name, column_name, constraint_name, referenced_table_name, referenced_column_name
+universe-> FROM information_schema.constraint_column_usage
+universe-> WHERE table_name IN ('galaxy', 'star', 'planet', 'moon', 'exoplanet') 
+universe-> AND constraint_name LIKE '%_fkey';
+ERROR:  syntax error at or near "SELECT"
+LINE 2: SELECT table_name, column_name, constraint_name, referenced_...
+        ^
+universe=> SELECT table_name, column_name, constraint_name, referenced_table_name, referenced_column_name FROM information_schema.constraint_column_usage WHERE table_name IN ('galaxy', 'star', 'planet', 'moon', 'exoplanet') AND constraint_name LIKE '%_fkey';
+ERROR:  column "referenced_table_name" does not exist
+LINE 1: SELECT table_name, column_name, constraint_name, referenced_...
+                                                         ^
+universe=> SELECT table_name, column_name, constraint_name, table_name AS referenced_table_name, referenced_column_name
+universe-> FROM information_schema.constraint_column_usage
+universe-> WHERE table_name IN ('galaxy', 'star', 'planet', 'moon', 'exoplanet') 
+universe-> AND constraint_name LIKE '%_fkey';
+ERROR:  column "referenced_column_name" does not exist
+LINE 1: ...traint_name, table_name AS referenced_table_name, referenced...
+                                                             ^
+universe=> 
+universe=> 
+universe=> SELECT table_name, column_name, constraint_name, table_name AS referenced_table_name, referenced_column_name FROM information_schema.constraint_column_usage WHERE table_name IN ('galaxy', 'star', 'planet', 'moon', 'exoplanet') AND constraint_name LIKE '%_fkey';
+ERROR:  column "referenced_column_name" does not exist
+LINE 1: ...traint_name, table_name AS referenced_table_name, referenced...
+                                                             ^
+universe=> SELECT column_name FROM information_schema.constraint_column_usage 
+universe->  SELECT column_name FROM information_schema.constraint_column_usage WHERE table_name = 'star' AND constraint_name LIKE '%_pkey';
+ERROR:  syntax error at or near "SELECT"
+LINE 2:  SELECT column_name FROM information_schema.constraint_colum...
+         ^
+universe=> ALTER TABLE exoplanet RENAME COLUMN host_star_id TO star_id;
+ERROR:  column "star_id" of relation "exoplanet" already exists
+universe=> 
+universe=> 
+universe=> 
+universe=> ALTER TABLE exoplanet RENAME COLUMN star_id TO old_star_id;
+ALTER TABLE
+universe=> ALTER TABLE exoplanet RENAME COLUMN host_star_id TO star_id;
+ALTER TABLE
+universe=> 
+universe=> pg_dump -cC --inserts -U freecodecamp universe > universe.sql
+universe-> pg_dump -cC --inserts -U freecodecamp universe > universe.sql;
+universe-> 
+universe-> 
+universe-> 
+universe-> pg_dump -cC --inserts -U freecodecamp universe > universe.sql
+universe-> psql -U postgres < universe.sql
+universe-> 
+universe-> 
+universe-> 
+universe-> pg_dump -cC --inserts -U freecodecamp universe > universe.sql
+universe-> 
+universe-> pg_dump -cC
+universe-> --inserts -U freecodecamp universe > universe.sql
+universe-> 
+
 
